@@ -41,6 +41,8 @@ class MysqlRewinder
       table = match[1]
       @inserted_tables << table if table
     end
+
+    pp "inserted_tables:" + @inserted_tables.to_a.join(',')
     File.write(
       @inserted_table_record_dir.join("#{@initialized_pid}.#{Process.pid}.inserted_tables").to_s,
       @inserted_tables.to_a.join(',')
